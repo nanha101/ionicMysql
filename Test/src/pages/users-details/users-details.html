@@ -1,0 +1,31 @@
+<!--
+  Generated template for the UsersDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>ข้อมูลสมาชิก</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4 text-center><B>รูปโปรไฟล์</B></h4>
+  <ion-card>
+    <img src="{{Path_Image}}{{Detail_Data.User_Pic}}">
+  </ion-card>
+
+  <!-- <h1 text-center></h1> -->
+  <h4>ชื่อ: {{Detail_Data.User_Name}} </h4>
+  <h4>ที่อยู่: {{Detail_Data.User_Address}} </h4>
+  <h4>เบอร์โทรศัพท์: {{Detail_Data.User_Phone}} </h4>
+  <h4>อีเมล: {{Detail_Data.User_Email}} </h4>
+  <!-- <p style="text-indent: 2.5em;">{{Detail_Data.News_Content}}</p>
+    <span>ประเภทข่าว: </span> <span style="color:red">{{item.News_Type}}</span>
+    <span>ประเภทสัตว์: </span> <span style="color:red">{{item.Animal_Name}}</span>
+    <p text-right>ลงเมื่อวันที่ {{Detail_Data.News_Date| date:"dd/MM/y" }} เวลา {{Detail_Data.News_Time}} น.</p> -->
+</ion-content>

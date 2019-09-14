@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ข้อเสนอแนะ</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3 text-center>ข้อเสนอแนะ</h3>
+  <div *ngIf="Permiss_Users==true">
+    <ion-item>
+      <ion-label floating>หัวข้อ</ion-label>
+      <ion-input [(ngModel)]="Sug_Data.Sug_Name" type="text" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>รายละเอียด</ion-label>
+      <ion-textarea [(ngModel)]="Sug_Data.Sug_Content" type="text" clearInput></ion-textarea>
+      <!-- <textarea>Hel</textarea> -->
+    </ion-item>
+    <p text-center>
+      <button ion-button color="light" (click)="Confirm()">ส่งเสนอแนะ</button>
+    </p>
+  </div>
+
+  <div *ngIf="Permiss_Admin==true">
+    <!-- <ion-item *ngFor="let item of Response_Data;let i=index">
+      <ion-item no-lines="false" (click)="Click_Data(item,i)">
+        <strong>{{item.Sug_Name}}</strong>
+        <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+      </ion-item>
+    </ion-item> -->
+    <ion-card *ngFor="let item of Response_Data;let i=index">
+      <ion-card-content>
+        <ion-card-title>
+          {{item.Sug_Name}}
+        </ion-card-title>
+        <p>
+          {{item.Sug_Content}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

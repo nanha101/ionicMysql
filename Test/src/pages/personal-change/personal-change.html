@@ -1,0 +1,115 @@
+<!--
+  Generated template for the PersonalChangePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>{{State}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="Change_User_Personal==true">
+    <h6 text-center><B>รูปโปรไฟล์</B></h6>
+    <p text-center>
+      <img style="height: 70%; width: 70%;" src="{{Path_Image}}{{Profile_Show}}" />
+      <input style="display: none" type="file" accept="image/*" (change)="BrowseProfile($event.target.files)" #Profile>
+      <br>
+      <button ion-button color="light" (click)="Profile.click()">Browse</button>
+    </p>
+
+    <ion-item>
+      <ion-label floating>ชื่อ-นามสกุล</ion-label>
+      <ion-input [(ngModel)]="Personal_Data.Name" type="text" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>ที่อยู่</ion-label>
+      <ion-textarea [(ngModel)]="Personal_Data.Address" type="text" clearInput></ion-textarea>
+      <!-- <textarea>Hel</textarea> -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>เบอร์โทรศัพท์</ion-label>
+      <ion-input [(ngModel)]="Personal_Data.Phone" type="text" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>อีเมล</ion-label>
+      <ion-input [(ngModel)]="Personal_Data.Email" type="text" clearInput></ion-input>
+    </ion-item>
+
+    <p text-center>
+      <button ion-button color="light" (click)="Confirm()">ยืนยัน</button>
+      <button ion-button color="light" (click)="Back()">ยกเลิก</button>
+    </p>
+
+  </div>
+
+
+  <div *ngIf="Change_Admin_Personal==true">
+    <ion-item>
+      <ion-label floating>ชื่อ-นามสกุล</ion-label>
+      <ion-input [(ngModel)]="Personal_Admin_Data.Admin_Name" type="text" clearInput></ion-input>
+    </ion-item>
+
+    <p text-center>
+      <button ion-button color="light" (click)="Confirm_Admin()">ยืนยัน</button>
+      <button ion-button color="light" (click)="Back()">ยกเลิก</button>
+    </p>
+
+  </div>
+
+  <div *ngIf="Change_User_Pass==true">
+    <ion-item>
+      <ion-label floating>รหัสผ่านเดิม</ion-label>
+      <ion-input [(ngModel)]="User_Pass_Data.Old_Password" type="password" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>รหัสผ่านใหม่</ion-label>
+      <ion-input [(ngModel)]="User_Pass_Data.New_Password" type="password" clearInput></ion-input>
+      <!-- <textarea>Hel</textarea> -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>ยืนยันรหัสผ่าน</ion-label>
+      <ion-input [(ngModel)]="User_Pass_Data.Re_Password" type="password" clearInput></ion-input>
+    </ion-item>
+    <p text-center>
+      <button ion-button color="light" (click)="Change_Pass_User()">ยืนยัน</button>
+      <button ion-button color="light" (click)="Back()">ยกเลิก</button>
+    </p>
+  </div>
+
+  <div *ngIf="Change_Admin_Pass==true">
+
+    <ion-item>
+      <ion-label floating>รหัสผ่านเดิม</ion-label>
+      <ion-input [(ngModel)]="Admin_Pass_Data.Old_Password" type="password" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>รหัสผ่านใหม่</ion-label>
+      <ion-input [(ngModel)]="Admin_Pass_Data.New_Password" type="password" clearInput></ion-input>
+      <!-- <textarea>Hel</textarea> -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>ยืนยันรหัสผ่าน</ion-label>
+      <ion-input [(ngModel)]="Admin_Pass_Data.Re_Password" type="password" clearInput></ion-input>
+    </ion-item>
+    <p text-center>
+      <button ion-button color="light" (click)="Change_Pass_Admin()">ยืนยัน</button>
+      <button ion-button color="light" (click)="Back()">ยกเลิก</button>
+    </p>
+  </div>
+
+
+</ion-content>

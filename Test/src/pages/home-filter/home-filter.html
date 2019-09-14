@@ -1,0 +1,28 @@
+<!--
+  Generated template for the HomeFilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>Home_Filter</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+      <ion-label>ประเภทสัตว์</ion-label>
+      <ion-select [(ngModel)]="AnimalType" multiple="true">
+        <ion-option>ทั้งหมด</ion-option>
+        <ion-option>โค</ion-option>
+        <ion-option>กระบือ</ion-option>
+      </ion-select>
+  </ion-item>
+
+ 
+
+</ion-content>

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the NotificationDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>การแจ้งเตือน</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card *ngIf="Detail_Data.Noti_Image">
+      <ion-slides pager paginationType="fraction">
+        <ion-slide>
+          <img class="center" src="{{Path_Image}}{{Detail_Data.Noti_Image}}">
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+
+
+    <ion-item color="danger">
+
+      <h1 text-center>
+        <!-- <ion-icon name="md-star" left large></ion-icon> &nbsp; -->
+        {{Detail_Data.Noti_Title}}
+      </h1>
+    </ion-item>
+    <ion-card-header>
+      <h2 style="text-indent: 2.5em;">{{Detail_Data.Noti_Content}}</h2>
+    </ion-card-header>
+
+    <p style="color:red">&nbsp;&nbsp; เตือน เมื่อวันที่ {{Detail_Data.Noti_Date| date:"dd/MM/y" }} เวลา
+      {{Detail_Data.Noti_Time}}
+      น.</p>
+
+  </ion-card>
+  <br>
+  <!-- <span>ประเภทข่าว: </span> <span style="color:red">{{item.News_Type}}</span>
+  <span>ประเภทสัตว์: </span> <span style="color:red">{{item.Animal_Name}}</span> -->
+
+</ion-content>

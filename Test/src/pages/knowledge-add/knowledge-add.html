@@ -1,0 +1,84 @@
+<ion-header>
+
+  <!-- <ion-navbar>
+    <ion-title>knowledge-Add</ion-title>
+  </ion-navbar> -->
+  <ion-toolbar color="navbar">
+    <ion-title>
+      {{state}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-item>
+        <ion-label floating>ชื่อหัวข้อความรู้</ion-label>
+        <ion-input [(ngModel)]="Regis_Data.Username" type="text" clearInput></ion-input>
+    </ion-item> -->
+
+  <ion-item>
+    <ion-label floating>ชื่อหัวข้อความรู้</ion-label>
+    <ion-input type="text" [(ngModel)]="Know_Add_Data.Know_Name" clearInput></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>เนื้อหา</ion-label>
+    <ion-textarea type="text" [(ngModel)]="Know_Add_Data.Know_Content" clearInput></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>ลิงค์วีดีโอ(ไม่ใส่ก็ได้)</ion-label>
+    <ion-textarea type="text" [(ngModel)]="Know_Add_Data.Know_Video_Link" clearInput></ion-textarea>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>ประเภทสัตว์</ion-label>
+    <ion-select [(ngModel)]="Know_Add_Data.AnimalType" multiple="false" okText="ตกลง" cancelText="ยกเลิก">
+      <!-- <ion-option selected="true" value="all">ทั้งหมด</ion-option> -->
+      <ion-option *ngFor="let animal of Animals" value="{{animal.Animal_Id}}">
+        {{animal.Animal_Name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>ประเภทความรู้</ion-label>
+    <ion-select [(ngModel)]="Know_Add_Data.KnowledgeType" multiple="false" okText="ตกลง" cancelText="ยกเลิก">
+      <!-- <ion-option selected="true" value="all">ทั้งหมด</ion-option> -->
+      <ion-option *ngFor="let KnowType of Get_Know_Type" value="{{KnowType.T_Know_Id}}">
+        {{KnowType.T_Know_Name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+
+  <input style="display: none" type="file" accept="image/*" (change)="BrowseOnPc($event.target.files)" multiple="multiple"
+    #fileInput>
+  <p text-center>
+    <button ion-button color="light" (click)="fileInput.click()">Browse</button>
+
+    <!-- Image -->
+    <ion-card *ngIf="Img_Show">
+      <ion-slides pager paginationType="fraction" *ngIf="Img_Show">
+        <ion-slide *ngFor="let img of imgShow;let i=index">
+          <img src="{{Path_Image}}{{imgShow[i]}}">
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+
+    <br>
+    <button ion-button (click)="UploadImage()" *ngIf="State_Upload==true">เพิ่ม</button>
+    <button ion-button (click)="UpdateImage()" *ngIf="State_Upload==false">ยืนยัน</button>
+    <button ion-button (click)="dismiss()">ยกเลิก</button>
+
+  </p>
+</ion-content>

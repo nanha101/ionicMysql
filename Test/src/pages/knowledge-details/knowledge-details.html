@@ -1,0 +1,33 @@
+<!--
+  Generated template for the KnowledgeDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>รายละเอียดความรู้</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-slides pager paginationType="fraction">
+      <ion-slide *ngIf="Detail_Data.Know_Video_Link">
+        <iframe width="100%" height="200" [src]="Get_SafeUrl(Detail_Data)">
+        </iframe>
+      </ion-slide>
+      <ion-slide *ngFor="let img of Response_Image">
+        <img class="center" src="{{Path_Image}}{{img.Img_Know_Name}}">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <h1 text-center>{{Detail_Data.Know_Name}}</h1>
+  <p style="text-indent: 2.5em;">{{Detail_Data.Know_Content}}</p>
+
+  <p text-right>ลงเมื่อวันที่ {{Detail_Data.Know_Date| date:"dd/MM/y" }} เวลา {{Detail_Data.Know_Time}} น.</p>
+</ion-content>

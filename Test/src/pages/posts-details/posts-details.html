@@ -1,0 +1,144 @@
+<!--
+  Generated template for the PostsDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>กระทู้</ion-title>
+    <ion-buttons right *ngIf="Show_Change_Posts==true">
+      <button ion-button round icon-only color="dark" (click)="Change_Posts()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right *ngIf="Show_Delete_Posts==true">
+      <button ion-button round icon-only color="danger" (click)="Delete_Posts()">
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card color="posts">
+    <ion-card-header>
+      <B style=" color: rgb(199, 191, 191)">{{Name_UA_Posts.User_Name}}</B>
+      <B style=" color: rgb(199, 191, 191)">{{Name_UA_Posts.Admin_Name}}</B>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>{{Detail_Data.Posts_Name}}</h1>
+      <p style="text-indent: 2.5em;">{{Detail_Data.Posts_Content}}</p>
+    </ion-card-content>
+
+    <ion-card *ngIf="Img_Show==true">
+      <ion-slides pager paginationType="fraction">
+        <ion-slide *ngFor="let img of Response_Image">
+          <img src="{{Path_Image}}{{img.Img_Posts_Name}}">
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+
+    <h1 style="text-indent: 0.5em;">ความคิดเห็น</h1>
+
+    <div *ngIf="Comment_Show==true">
+      <!-- Comments_Image -->
+
+      <ion-card *ngFor="let item of Comments_Data;let i= index">
+        <ion-card-header style="color: rgb(48, 43, 43)">
+
+          <ion-item no-lines="true" *ngIf="User==true">
+            <B>{{Name_UA_Comments[i].User_Name}}</B>
+            <B>{{Name_UA_Comments[i].Admin_Name}}</B>
+            <ion-icon *ngIf="item.User_Id == Login_Data.User_Id" (click)="Delete_Comment(item)" color="danger" name="md-trash"
+              item-end></ion-icon>
+            <ion-icon *ngIf="item.User_Id == Login_Data.User_Id" (click)="Change_Comment(item)" name="md-create"
+              item-end></ion-icon>
+
+
+          </ion-item>
+
+          <ion-item no-lines="true" *ngIf="Admin==true">
+            <!-- <B *ngIf="Name_UA_Comments[i].User_Name">{{Name_UA_Comments[i].User_Name}}</B> -->
+            <B>{{Name_UA_Comments[i].User_Name}}</B>
+            <B>{{Name_UA_Comments[i].Admin_Name}}</B>
+            <ion-icon color="danger" name="md-trash" (click)="Delete_Comment(item)" item-end></ion-icon>
+            <ion-icon *ngIf="item.Admin_Id == Login_Data.Admin_Id" (click)="Change_Comment(item)" name="md-create"
+              item-end></ion-icon>
+          </ion-item>
+
+          <ion-item no-lines="true" *ngIf="Admin==false && User==false">
+            <B>{{Name_UA_Comments[i].User_Name}}</B>
+            <B>{{Name_UA_Comments[i].Admin_Name}}</B>
+          </ion-item>
+
+        </ion-card-header>
+
+        <p text-center *ngIf="Comments_Image[i].length>0">
+          <ion-card>
+            <ion-slides pager paginationType="fraction">
+              <ion-slide *ngFor="let img of Comments_Image[i]">
+                <img src="{{Path_Image}}{{img.Img_comment_Name}}">
+              </ion-slide>
+            </ion-slides>
+          </ion-card>
+        </p>
+
+        <ion-card-content style="color: rgb(48, 43, 43)">
+          <p>{{item.comment_Content}}</p>
+          <p style="color: rgb(187, 167, 167)" text-right>ลงเมื่อวันที่ {{item.comment_Date| date:"dd/MM/y" }} เวลา
+            {{item.comment_Time}} น.</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <p *ngIf="Comment_Show==false" text-center style="color: rgb(187, 167, 167)">--ยังไม่มีการแสดงความคิดเห็น--</p>
+  </ion-card>
+
+
+
+</ion-content>
+
+
+<ion-footer *ngIf="Admin==true || User==true">
+  <ion-toolbar color="navbar">
+
+    <ion-item *ngIf="comment_Img_Show==true">
+      <button ion-button icon-only color="dark" item-top (click)="Cancel_Image()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+
+      <ion-slides>
+        <ion-slide *ngFor="let img of imgShow;let i=index">
+          <img style="height: 40%; width: 40%;" src="{{imgShow[i]}}">
+        </ion-slide>
+      </ion-slides>
+
+    </ion-item>
+
+
+    <ion-buttons right>
+      <!-- For Browse Image -->
+      <input style="display: none" type="file" accept="image/*" (change)="BrowseOnPc($event.target.files)" multiple="multiple"
+        #fileInput>
+
+      <button *ngIf="Update_State==false" ion-button icon-only (click)="fileInput.click()" color="dark">
+        <ion-icon name="md-photos"></ion-icon>
+      </button>
+      <button *ngIf="Update_State==false" ion-button icon-only (click)="InsertComments()" color="dark">
+        <ion-icon name="ios-send"></ion-icon>
+      </button>
+      <!-- <button ion-button round icon-only color="buttonn" (click)="InsertComments()">Send</button> -->
+
+      <button *ngIf="Update_State==true" (click)="Update()" ion-button color="dark">ตกลง</button>
+      <button *ngIf="Update_State==true" (click)="Cancel()" ion-button color="dark">ยกเลิก</button>
+    </ion-buttons>
+
+    <ion-textarea style="font-size: 18px" [(ngModel)]="Add_Comments.message" type="text" placeholder="Comment .... "
+      #Commentt></ion-textarea>
+
+  </ion-toolbar>
+</ion-footer>

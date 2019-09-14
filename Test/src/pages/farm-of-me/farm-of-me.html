@@ -1,0 +1,56 @@
+<!--
+  Generated template for the FarmOfMePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>{{Title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-fab bottom right (click)="openModal()" *ngIf="Permiss_User">
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="buttonn">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+  
+  <div *ngIf="Permiss_Admin==true">
+    <ion-item *ngFor="let item of Response_Data;let i=index">
+      <ion-item no-lines="false" (click)="Click_Data(item,i)">
+        <strong>{{item.Farm_Name}}</strong>
+        <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+      </ion-item>
+    </ion-item>
+  </div>
+
+  <div *ngIf="Permiss_User==true">
+    <ion-card *ngFor="let item of Response_Data;let i=index" (click)="Click_Data2(item,i)">
+      <ion-card-header>
+        <img src="{{Path_Image}}{{item.Profile_Image}}">
+      </ion-card-header>
+      <ion-card-content text-center>
+        <h1 text-center><B>{{item.Farm_Name}}</B></h1>
+        สถานะ: <content style="color:red">{{State[i]}}</content>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- <ion-card *ngFor="let item of items;let i=index" (click)="Click_Data(item,i)">
+    <ion-card-header>
+      <img src="{{Path_Image}}{{item.Profile_Image}}">
+    </ion-card-header>
+    <ion-card-content text-center>
+      <h2 text-center><B>{{item.Farm_Name}}</B></h2>
+      <p>{{item.Farm_Address}}</p>
+      <p>เบอร์โทรศัพท์: {{item.Farm_Phone}}</p>
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>

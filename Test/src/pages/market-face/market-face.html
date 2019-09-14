@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ตลาดสินค้า</ion-title>
+
+    <ion-buttons right>
+      <button ion-button round icon-only color="dark" (click)="Goto_Market_Filter()">ตัวกรอง
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+
+  <ion-card *ngFor="let item of items;let i=index" (click)="Click_Data(item,i)">
+    <ion-card-header>
+
+      <ion-slides pager paginationType="fraction" >
+        <ion-slide *ngFor="let img of Response_Image[i][0]">
+          <!-- <img src="{{Path_Image}}{{img.Img_Know_Name}}"> -->
+          <img src="{{Path_Image}}{{img.Img_Market_Name}}">
+        </ion-slide>
+        <!-- style="width: 350px; height: 70%;" -->
+      </ion-slides>
+
+      <!-- <img src="{{Path_Image}}{{Response_Image[i][0].Img_Market_Name}}"> -->
+
+    </ion-card-header>
+    <ion-card-content text-center>
+      <h2 text-center><B>{{item.Market_Name}}</B></h2>
+      <p>{{item.Market_Details}}</p>
+      <B>ราคา {{item.Market_Price}} บาท</B>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 
+  <ion-card  *ngFor="let item of items;let i=index">
+    <ion-card-header>
+      <img src="../../assets/imgs/เกวียน.jpg"  >
+    </ion-card-header> 
+    <ion-card-content text-center>
+      <h2 text-center><B>เกวียนสวยๆ</B></h2>
+      <p>เกวียนไม้สักแท้ งานแฮนเมด อ.โพนทอง จ.ร้อยเอ็ด เบอร์โทรติดต่อ 089-456-4513</p>
+      <B>ราคา 4000 บาท</B>
+    </ion-card-content>
+  </ion-card> -->
+  <!-- <button ion-button color="light" (click)="presentProfileModal()">click</button> -->
+
+
+</ion-content>

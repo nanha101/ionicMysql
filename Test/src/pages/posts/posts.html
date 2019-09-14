@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>กระทู้</ion-title>
+
+    <ion-buttons right>
+      <button ion-button round icon-only color="dark" (click)="Goto_Posts_Filter()">ตัวกรอง
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <!-- <ion-card color="posts" (click)="GotoPost_Details()">
+    <ion-card-header>
+      <B style="color: rgb(199, 191, 191)">เจตวรรษ ธำรงทรัพย์</B>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>การเตรียมตัวก่อนประกวดมีเทคนิคยังไงบ้างครับ ?</h1>
+      <p></p>
+    </ion-card-content>
+  </ion-card> -->
+  <!-- *ngFor="let item of items;let i=index" -->
+  <ion-card color="posts" *ngFor="let item of items;let i=index" (click)="Click_Data(item,i)">
+    <ion-card-header>
+      <B style="color: rgb(199, 191, 191)">{{Name[i].User_Name}}</B>
+      <B style="color: rgb(199, 191, 191)">{{Name[i].Admin_Name}}</B>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>{{item.Posts_Name}}</h1>
+      <p style="text-indent: 2.5em;">{{item.Posts_Content}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab bottom right (click)="AddComments()" *ngIf="Show_Add_commments">
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="buttonn">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

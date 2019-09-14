@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="navbar">
+
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>เข้าสู่ระบบ</ion-title>
+
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+    
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input [(ngModel)]="Login_Data.username" type="text" clearInput></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input [(ngModel)]="Login_Data.password" type="password" clearInput></ion-input>
+          
+        </ion-item>
+      
+      </ion-list>
+      
+      <p text-center>
+        <button ion-button color="light" (click)="login()">เข้าสู่ระบบ</button>
+        <button ion-button color="light" (click)="GotoRegister()">สมัครสมาชิก</button>
+      </p>
+      <!-- <button ion-button color="light" *ngIf="true">dddddddddddddd</button> -->
+
+
+      
+
+
+
+
+
+</ion-content>

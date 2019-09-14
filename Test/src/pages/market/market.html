@@ -1,0 +1,7 @@
+
+
+<ion-tabs color="navbar">
+  <!-- <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab> -->
+  <ion-tab [root]="tab1Root" tabTitle="ตลาดสินค้า" tabIcon="ios-basket"></ion-tab>
+  <ion-tab *ngIf="Permiss_User==true" [root]="tab2Root" tabTitle="สินค้าของฉัน" tabIcon="md-list-box"></ion-tab>
+</ion-tabs>

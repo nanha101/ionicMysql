@@ -1,0 +1,122 @@
+<!--
+  Generated template for the ManageTypeDataPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>จักการประเภทข้อมูล</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-card color="posts">
+    <ion-item color="posts">
+      <button item-right style=" height: 35px; width: 35px;" ion-button round icon-only color="primary" (click)="Add_Animals_Type()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      <ion-card-header>
+        <h1><B>ประเภทสัตว์</B></h1>
+        <!-- <button ion-button style=" height: 30px; width: 40px;" item-right>เพิ่ม</button> -->
+      </ion-card-header>
+    </ion-item>
+
+    <ion-item *ngFor="let item of Animal_Type;let i=index">
+      &nbsp; &nbsp; {{item.Animal_Name}}
+      <ion-icon name="md-create" color="dark" (click)="Change(item)" item-right></ion-icon>
+      <ion-icon name="md-trash" color="danger" (click)="Delete_Animals_Type(item)" item-right></ion-icon>
+
+    </ion-item>
+
+  </ion-card>
+  <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+  <ion-card color="posts">
+
+    <ion-item color="posts">
+      <button item-right style=" height: 35px; width: 35px;" ion-button round icon-only color="primary" (click)="Add_Know_Type()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+
+      <ion-card-header>
+        <h1><B>ประเภทความรู้</B></h1>
+      </ion-card-header>
+    </ion-item>
+
+    <ion-item *ngFor="let item of Know_Type;let i=index">
+      &nbsp; &nbsp; {{item.T_Know_Name}}
+      <ion-icon name="md-create" color="dark" (click)="Change(item)" item-right></ion-icon>
+      <ion-icon name="md-trash" color="danger" (click)="Delete_Know_Type(item)" item-right></ion-icon>
+
+    </ion-item>
+  </ion-card>
+  <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+  <ion-card color="posts">
+    <ion-item color="posts">
+      <button item-right style=" height: 35px; width: 35px;" ion-button round icon-only color="primary" (click)="Add_News_Type()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+
+      <ion-card-header>
+        <h1><B>ประเภทข่าวสาร</B></h1>
+      </ion-card-header>
+    </ion-item>
+
+    <ion-item *ngFor="let item of News_Type;let i=index">
+      &nbsp; &nbsp; {{item.T_News_Name}}
+      <ion-icon name="md-create" color="dark" (click)="Change(item)" item-right></ion-icon>
+      <ion-icon name="md-trash" color="danger" (click)="Delete_News_Type(item)" item-right></ion-icon>
+
+    </ion-item>
+
+  </ion-card>
+  <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+  <ion-card color="posts">
+    <ion-item color="posts">
+      <button item-right style=" height: 35px; width: 35px;" ion-button round icon-only color="primary" (click)="Add_Market_Type()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+
+      <ion-card-header>
+        <h1><B>ประเภทสินค้า</B></h1>
+      </ion-card-header>
+    </ion-item>
+
+    <ion-item *ngFor="let item of Market_Type;let i=index">
+      &nbsp; &nbsp; {{item.T_Market_Name}}
+      <ion-icon name="md-create" color="dark" (click)="Change(item)" item-right></ion-icon>
+      <ion-icon name="md-trash" color="danger" (click)="Delete_Market_Type(item)" item-right></ion-icon>
+
+    </ion-item>
+  </ion-card>
+  <!-- //////////////////////////////////////////////////////////////////////////////////// -->
+  <ion-card color="posts">
+    <ion-item color="posts">
+      <button item-right style=" height: 35px; width: 35px;" ion-button round icon-only color="primary" (click)="Add_Posts_Type()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+
+      <ion-card-header>
+        <h1><B>ประเภทกระทู้</B></h1>
+      </ion-card-header>
+    </ion-item>
+
+    <ion-item *ngFor="let item of Posts_Type;let i=index">
+      &nbsp; &nbsp; {{item.T_Posts_Name}}
+      <ion-icon name="md-create" color="dark" (click)="Change(item)" item-right></ion-icon>
+      <ion-icon name="md-trash" color="danger" (click)="Delete_Posts_Type(item)" item-right></ion-icon>
+
+    </ion-item>
+
+  </ion-card>
+</ion-content>

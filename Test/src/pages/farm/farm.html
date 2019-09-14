@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ฟาร์ม</ion-title>
+    <ion-buttons right>
+
+      <button *ngIf="Permiss_User==true" ion-button round icon-only color="dark" (click)="Goto_Farm_MyFarm()">ฟาร์มของฉัน
+        <!-- <ion-icon name="options"></ion-icon> -->
+      </button>
+      <button *ngIf="Permiss_Admin==true" ion-button round icon-only color="dark" (click)="Goto_Farm_MyFarm()">รายการร้องขอ
+        <!-- <ion-icon name="options"></ion-icon> -->
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let item of items;let i=index" (click)="Click_Data(item,i)">
+    <ion-card-header>
+      <img src="{{Path_Image}}{{item.Profile_Image}}">
+    </ion-card-header>
+    <ion-card-content text-center>
+      <h2 text-center><B>{{item.Farm_Name}}</B></h2>
+      <p>{{item.Farm_Address}}</p>
+      <p>เบอร์โทรศัพท์: {{item.Farm_Phone}}</p>
+    </ion-card-content>
+    <!-- <p text-center *ngIf="Permiss_Admin==true">
+      <button ion-button icon-only (click)="Delete_Know(item)" clear>
+        <ion-icon class="iconn" name="md-trash" color="danger" item-right center></ion-icon>
+      </button>
+    </p> -->
+  </ion-card>
+
+
+</ion-content>

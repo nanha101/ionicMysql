@@ -1,0 +1,72 @@
+<!--
+  Generated template for the FarmDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <ion-title>{{Detail_Data.Farm_Name}}</ion-title>
+
+    <ion-buttons right *ngIf="Permiss_User_myself==true">
+      <button ion-button round icon-only color="secondary" (click)="Change_News()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right *ngIf="Can_Delete==true">
+      <button ion-button round icon-only color="secondary" (click)="Delete_Farm()">
+        <ion-icon color="danger" name="md-trash"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <img class="photo" src="{{Path_Image}}{{Detail_Data.Profile_Image}}" />
+  <!-- <img src="../../assets/imgs/buffalo.jpg"/> -->
+  <h1 text-center>{{Detail_Data.Farm_Name}}</h1>
+  <!-- <p><dd>asdkf;asdfkljadfkljsa;dfkddddddddddddddddddddddddddddddddddddddddddddj</p> -->
+
+
+  <h6><B>รายละเอียดฟาร์ม</B></h6>
+  <p style="text-indent: 2.5em;">{{Detail_Data.Farm_Details}}</p>
+  <!-- <textarea>ขอความสวสดิ์จงมีs dddddddddddddddddddddddddddddddddddddddแก่ท่านผู้อ่าน</textarea> -->
+  <!-- <B><span style="text-indent: 2.5em;">เบอร์โทรศัพท์:</span></B>
+  <span>{{Detail_Data.Farm_Phone}}</span> -->
+  <p><B>เบอร์โทรศัพท์: </B>{{Detail_Data.Farm_Phone}}</p>
+  <p><B>อีเมล: </B>{{Detail_Data.Farm_Email}}</p>
+
+  <h6><B>ที่อยู่</B></h6>
+  <p style="text-indent: 2.5em;"></p>
+  <p style="text-indent: 2.5em;">{{Detail_Data.Farm_Address}}</p>
+
+  <h6><B>อัลบั้ม</B></h6>
+  <ion-card>
+    <ion-slides pager paginationType="fraction">
+      <ion-slide *ngFor="let img of Response_Image;let i=index">
+        <img src="{{Path_Image}}{{img.Img_Farm_Name}}">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <p text-center>
+    <button ion-button *ngIf="bt_allow==true" (click)="Update_Farm_State()">ยืนยัน</button>
+    <button ion-button *ngIf="bt_allow==true" (click)="Deny_Farm()">ปฏิเสธ</button>
+    <button ion-button *ngIf="bt_allow==true" (click)="BackPage()">ยกเลิก</button>
+  </p>
+  <h6 *ngIf="Show_Map==true">แผนที่</h6>
+  <!-- <div #map id="map" *ngIf="Show_Map"></div> -->
+
+  <div *ngIf="Show_Map" #map id="my-map"></div>
+
+
+
+
+
+
+</ion-content>

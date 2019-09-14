@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar color="navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>หน้าหลัก</ion-title>
+
+    <!-- style="width:100px;height:200px" -->
+    <ion-buttons *ngIf="Show_Logout==true" right>
+      <button ion-button round icon-only color="dark" (click)="Log_Out()">
+        <p><B>ออกจากระบบ</B></p>
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-tabs title="Hey">
+
+</ion-tabs>
+
+<ion-content padding>
+
+  <!-- <h1 style="text-indent: 0.5em;"> -->
+  <h1 style="color: rgb(0, 0, 0)">
+    <ion-icon color="danger" name="ios-paper"></ion-icon> &nbsp;ข่าวสาร
+  </h1>
+  <ion-card class="center" showWhen="landscape">
+    <ion-slides pager>
+      <ion-slide *ngFor="let item of Response_Data ;let i=index" (click)="Click_Data(item,i)">
+        <img style="height: 350px; width: 100%;" src="{{Path_Image}}{{Response_Image[i][0][0].Img_News_Name}}">
+        <ion-item color="dark2">
+          <p text-center><B>{{item.News_Name}}</B></p>
+        </ion-item>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <ion-card showWhen="android,ios" style="height: 250px; width: 309px;">
+    <ion-slides pager>
+      <ion-slide *ngFor="let item of Response_Data ;let i=index" (click)="Click_Data(item,i)">
+        <img style="height: 205px; width: 100%;" src="{{Path_Image}}{{Response_Image[i][0][0].Img_News_Name}}">
+        <ion-item color="dark2">
+          <p text-center><B>{{item.News_Name}}</B></p>
+        </ion-item>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+
+  <h1>
+    <ion-icon color="primary" name="ios-book"></ion-icon> &nbsp;ความรู้
+  </h1>
+  <ion-card showWhen="landscape">
+    <ion-slides pager>
+      <ion-slide *ngFor="let item of Response_Know_Data ;let i=index" (click)="Click_Know_Data(item,i)">
+        <img style="height: 350px; width: 100%;" src="{{Path_Image}}{{Response_Know_Image[i][0][0].Img_Know_Name}}">
+        <ion-item color="dark2">
+          <p text-center><B>{{item.Know_Name}}</B></p>
+        </ion-item>>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <ion-card showWhen="android,ios" style="height: 250px; width: 309px;">
+    <ion-slides pager>
+      <ion-slide *ngFor="let item of Response_Know_Data ;let i=index" (click)="Click_Know_Data(item,i)">
+        <img style="height: 205px; width: 100%;" src="{{Path_Image}}{{Response_Know_Image[i][0][0].Img_Know_Name}}">
+        <ion-item color="dark2">
+          <p text-center><B>{{item.Know_Name}}</B></p>
+        </ion-item>>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+
+</ion-content>

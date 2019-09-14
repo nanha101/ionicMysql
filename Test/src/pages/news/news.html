@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ข่าวสาร</ion-title>
+
+    <ion-buttons right>
+
+      <button ion-button round icon-only color="dark" (click)="Goto_News_Filter()">ตัวกรอง
+        <ion-icon name="options"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-item *ngFor="let item of items;let i=index">
+    <ion-item no-lines="false" (click)="Click_Data(item,i)">
+      <strong>{{item.News_Name}}</strong>
+      <!-- <ion-icon name="{{item.icon}}" item-right></ion-icon> -->
+      <ion-icon name="ios-arrow-forward-outline" item-right></ion-icon>
+    </ion-item>
+  </ion-item>
+
+  <ion-fab  bottom right (click)="openModal()" *ngIf="Permiss_Admin">
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="buttonn">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

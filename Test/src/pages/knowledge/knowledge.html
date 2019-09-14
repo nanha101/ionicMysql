@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>ความรู้</ion-title>
+
+    <ion-buttons right>
+
+      <button ion-button round icon-only color="dark" (click)="Goto_Knowledge_Filter()">ตัวกรอง
+        <ion-icon name="options"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-buttons bottom right down>
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="light">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-buttons> -->
+  <ion-fab bottom right (click)="openModal()" *ngIf="Permiss_Admin">
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="buttonn">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+  <!-- <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false" (ionInput)="getItems($event)">
+  </ion-searchbar>
+  <button ion-button icon-only color="dark" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+    <ion-icon name="search"></ion-icon>
+  </button> -->
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <!-- <ion-item *ngFor="let item of Response_Data;let i=index"> -->
+  <ion-item *ngFor="let item of items;let i=index">
+    <ion-item color="{{item.color}}" no-lines="false" (click)="Data_click(item)">
+      <strong>{{item.Know_Name}}</strong>
+      <ion-icon name="{{item.icon}}" item-right></ion-icon>
+      <ion-icon name="ios-arrow-dropdown-outline" *ngIf="SetIcon" item-right></ion-icon>
+    </ion-item>
+
+    <ion-slides pager paginationType="fraction" *ngIf="item.Show_Details" #slides>
+      <!-- {{item.Know_Video_Link}} -->
+      <ion-slide *ngIf="item.Know_Video_Link">
+        <iframe width="100%" height="200" [src]="Get_SafeUrl(item)">
+        </iframe>
+      </ion-slide>
+      <!-- {{item.Know_Video_Link}} -->
+      <ion-slide *ngFor="let img of Response_Image_real[i][0];">
+
+        <img src="{{Path_Image}}{{img.Img_Know_Name}}">
+      </ion-slide>
+
+
+      <!-- style="width: 350px; height: 70%;" -->
+    </ion-slides>
+
+
+    <ion-item color="dark2" *ngIf="item.Show_Details" no-lines text-wrap>
+
+      <p text-center *ngIf="item.Show_Details">
+        <button ion-button color="light" (click)="prev()">ก่อนหน้า</button>
+        <button ion-button color="light" (click)="next()">ถัดไป</button>
+      </p>
+
+      <p style="text-indent: 2.5em;">{{item.Know_Content}}</p>
+      <br>
+      <p text-right>
+        <span>ประเภทความรู้: </span> <span style="color:red">{{Know_T_Name_real[i][0].T_Know_Name}}</span>
+        <span>ประเภทสัตว์: </span> <span style="color:red">{{Animal_Name_real[i][0].Animal_Name}}</span>
+      </p>
+      <p text-right>ลงเมื่อวันที่ {{item.Know_Date| date:"dd/MM/y" }} เวลา {{item.Know_Time}} น.</p>
+    </ion-item>
+    <div *ngIf="Permiss_Admin">
+      <p text-center>
+        <!-- *ngIf="Permiss_Admin" -->
+        <button ion-button icon-only (click)="Change_Know(item,i)" clear>
+          <ion-icon class="iconn" name="md-create" color="dark" item-right center></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="Delete_Know(item)" clear>
+          <ion-icon class="iconn" name="md-trash" color="danger" item-right center></ion-icon>
+        </button>
+      </p>
+    </div>
+
+  </ion-item>
+
+
+
+
+
+</ion-content>

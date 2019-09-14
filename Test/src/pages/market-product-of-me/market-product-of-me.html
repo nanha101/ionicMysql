@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="navbar">
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>สินค้าของฉัน</ion-title>
+
+    <ion-buttons right>
+      <button ion-button round icon-only color="dark" (click)="Goto_Filter()">ตัวกรอง
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-fab bottom right (click)="openModal()">
+    <button style=" height: 40px; width: 40px;" ion-button round icon-only color="buttonn">
+      <ion-icon name="md-add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-card *ngFor="let item of items;let i=index" (click)="Click_Data(item,i)">
+    <ion-card-header>
+      <img src="{{Path_Image}}{{Response_Image[i][0][0].Img_Market_Name}}">
+      <!-- <ion-slides pager paginationType="fraction">
+        <ion-slide *ngFor="let img of Response_Image[i][0]">
+          <img src="{{Path_Image}}{{img.Img_Market_Name}}">
+        </ion-slide>
+      </ion-slides> -->
+    </ion-card-header>
+    <ion-card-content text-center>
+      <h2 text-center><B>{{item.Market_Name}}</B></h2>
+      <p>{{item.Market_Details}}</p>
+      <B>ราคา {{item.Market_Price}} บาท</B>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
